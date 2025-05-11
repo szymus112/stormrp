@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        /* Logo w nagłówku */
+        .nav-logo {
+            position: absolute;
+            left: 5%;
+            width: 3vw;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+    
+        /* Dostosowanie dla mobile */
+        @media (max-width: 768px) {
+            .nav-logo {
+                width: 15vw;
+            }
+        }
+    </style>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulamin - StormRP</title>
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="regulamin.css">
+    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" type="image/png">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="loading">
+        <div class="bg"></div>
+        <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&">
+        <span>ŁADOWANIE</span>
+        <div class="progress">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+        </div>
+    </div>
+    <div id="root">
+        <div class="navbar" data-aos="slide-down" data-aos-duration="1000">
+            <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" alt="logo" class="nav-logo">
+            <div class="buttons">
+                <div class="button">
+                    <a href="./index.html">STRONA GŁÓWNA</a>
+                </div>
+                <div class="button">
+                    <a href="https://discord.gg/7dQkjmn2nW">DISCORD</a>
+                </div>
+                <div class="button">
+                    <a href="https://indrop.eu/s/stormrp">SKLEP</a>
+                </div>
+                <div class="button">
+                    <a href="./podania.html">PODANIA</a>
+                </div>
+                <div class="button selected">
+                    <a href="./regulamin.html">REGULAMIN SERWERA</a>
+                </div>
+            </div>
+            <i class="fa fa-bars" onclick="toggleNavbar()"></i>
+        </div>
+        <div class="content">
+            <div class="regulamin-section">
+                <div class="regulamin-header" data-aos="fade-down">
+                    <h1>REGULAMIN SERWERA <span class="blue">STORMRP</span></h1>
+                    <p>Ostatnia aktualizacja: 30 czerwca 2025</p>
+                </div>
+
+                <div class="regulamin-content" data-aos="fade-up">
+                    <!-- Sekcja 6 -->
+                    <div class="regulamin-box">
+                        <div class="regulamin-point">
+                            <div class="row open-sans-font">
+                                <iframe src="https://docs.google.com/document/d/1BnEs-gd6AcuNA2LG_6pCcz8DN3IDssUp2r9o7y_ZGik/edit?tab=t.0#heading=h.dcwazkfzina9" width="1250" height="1000" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" alt="logo" class="logo">
+                <span class="copyright-text">Copyright © 2025 StormRP. All rights reserved.</span>
+                <div class="socials">
+                    <div class="social">
+                        <a href="https://discord.gg/7dQkjmn2nW" target="_blank">
+                            <i class="fa-brands fa-discord"></i>
+                        </a>
+                    </div>
+                    <div class="social">
+                        <a href="https://www.youtube.com/@activerp" target="_blank">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                    </div>
+                    <div class="social">
+                        <a href="https://www.tiktok.com/@activerp" target="_blank">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D9KFCJZRR"></script>
+    <script>
+        // Funkcje JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicjalizacja AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+
+            // Symulacja ładowania
+            setTimeout(function() {
+                document.querySelector('.loading').style.opacity = '0';
+                setTimeout(function() {
+                    document.querySelector('.loading').style.display = 'none';
+                    document.getElementById('root').style.display = 'block';
+                }, 500);
+            }, 2000);
+        });
+
+        // Funkcja do pokazywania/ukrywania navbaru na mobile
+        function toggleNavbar() {
+            const buttons = document.querySelector('.navbar .buttons');
+            buttons.style.display = buttons.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Funkcja do pokazywania popupu kontaktowego
+        function contact() {
+            document.querySelector('.contact-popup').style.display = 'block';
+        }
+
+        // Funkcja do zamykania popupu
+        function closePopup() {
+            document.querySelector('.contact-popup').style.display = 'none';
+        }
+
+        // Google Analytics
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-2D9KFCJZRR');
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

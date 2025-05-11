@@ -1,0 +1,643 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <style>
+        :root {
+            --background: rgb(28, 28, 28);
+            --darkgray: rgb(22, 22, 22);
+            --gray: rgb(44, 44, 44);
+            --blue: rgb(0, 238, 255);
+            --blue2: rgb(0, 238, 255);
+            --lightgray: rgb(100, 100, 100);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* Logo w nagłówku */
+        .nav-logo {
+            position: absolute;
+            left: 5%;
+            width: 3vw;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+
+        /* Nawigacja */
+        .navbar {
+            position: sticky;
+            width: 100%;
+            height: 4vw;
+            z-index: 999;
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgb(0, 238, 255, 0.3);
+            border-bottom: 1px solid rgb(0, 238, 255, 0.233);
+        }
+
+        .navbar > .buttons {
+            position: absolute;
+            width: fit-content;
+            height: 3vw;
+            left: 28.6%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1vw;
+            padding: 0 1vw;
+        }
+
+        .navbar > .buttons > .button {
+            position: relative;
+            color: white;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-size: 0.9vw;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5vw 1vw;
+            border-radius: 5px;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .navbar > .buttons > .button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--blue);
+            transition: width 0.3s ease;
+        }
+
+        .navbar > .buttons > .button:hover::before {
+            width: 100%;
+        }
+
+        .navbar > .buttons > .button > a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .navbar > .buttons > .button > a:hover {
+            color: var(--blue);
+        }
+
+        .navbar > .buttons > .button:hover {
+            color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .navbar > .buttons > .selected {
+            background: rgb(0, 238, 255, 0.2);
+            border: 1px solid var(--blue);
+            box-shadow: 0 0 15px rgb(0, 238, 255, 0.3);
+        }
+
+        .navbar > .buttons > .selected::before {
+            display: none;
+        }
+
+        /* Mobile menu */
+        .navbar > i {
+            display: none;
+        }
+
+        /* Strona główna */
+        body {
+            background-image: url("assets/bg3.png");
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .title-section {
+            text-align: center;
+            padding: 86px 0 70px;
+        }
+
+        .title-section h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .title-section h1 span {
+            color: var(--blue);
+        }
+
+        .title-bg {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.03);
+            z-index: -1;
+        }
+
+        /* Galeria podań */
+        .main-content {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 70px 150px;
+        }
+
+        .grid-gallery {
+            position: relative;
+        }
+
+        .grid-wrap {
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 25px;
+            list-style: none;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .grid li {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(2, 170, 236, 0.2);
+            transition: all 0.3s ease;
+            height: 200px;
+            cursor: pointer;
+            background: rgba(40, 40, 40, 0.6);
+        }
+
+        .grid li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgb(0, 238, 255, 0.4),
+                0 0 0 1px rgb(0, 238, 255, 0.3);
+        }
+
+        .grid li figure {
+            margin: 0;
+            position: relative;
+            height: 100%;
+        }
+
+        .grid li figure img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .grid li figure div {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Slideshow */
+        .slideshow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none; /* Dodane */
+}
+
+.slideshow > * {
+    pointer-events: auto; /* Dodane */
+}
+
+/* Gdy slideshow jest aktywne */
+.slideshow.active {
+    display: flex;
+}
+
+/* Zablokuj WSZYSTKO pod slideshow */
+.slideshow.active ~ *,
+.slideshow.active ~ #root > *:not(.slideshow) {
+    pointer-events: none !important;
+    filter: blur(2px); /* Opcjonalne - rozmycie tła */
+}
+
+/* Zablokuj scroll */
+body.slideshow-open {
+    overflow: hidden !important;
+    height: 100vh;
+}
+
+        .slideshow ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .slideshow li {
+            display: none;
+        }
+
+        .slideshow li.active {
+            display: block;
+        }
+
+        .slideshow li figure {
+            background: var(--darkgray);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid rgb(0, 238, 255, 0.4);
+        }
+
+        .slideshow li figure figcaption h3 {
+            color: var(--blue);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .slideshow li figure iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        nav {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1001;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav span {
+            cursor: pointer;
+            color: white;
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        nav span:hover {
+            color: var(--blue);
+        }
+
+        /* Logo w nagłówku */
+        .nav-logo {
+            position: absolute;
+            left: 5%;
+            width: 3vw;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+    
+        /* Dostosowanie dla mobile */
+        @media (max-width: 768px) {
+            .nav-logo {
+                width: 15vw;
+            }
+        }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Podania - StormRP</title>
+        <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v6.4.0/css/pro.min.css">
+        <link rel="stylesheet" href="style.css"></link>
+        <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" type="image/png">
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    </head>
+    <body>
+        <div class="loading">
+            <div class="bg"></div>
+            <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&">
+            <span>ŁADOWANIE</span>
+            <div class="progress">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+            </div>
+        </div>
+        <div id="root">
+            <div class="navbar" data-aos="slide-down" data-aos-duration="1000">
+                <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" alt="logo" class="nav-logo">
+                <div class="buttons">
+                    <div class="button">
+                        <a href="./index.html">STRONA GŁÓWNA</a>
+                    </div>
+                    <div class="button">
+                        <a href="https://discord.gg/7dQkjmn2nW">DISCORD</a>
+                    </div>
+                    <div class="button">
+                        <a href="https://indrop.eu/s/stormrp">SKLEP</a>
+                    </div>
+                    <div class="button selected">PODANIA</div>
+                    <div class="button">
+                        <a href="./regulamin.html">REGULAMIN SERWERA</a>
+                    </div>
+                </div>
+                <i class="fa fa-bars" onclick="toggleNavbar()"></i>
+            </div>
+            <section class="title-section">
+                <h1>PODA<span>NIA</span></h1>
+            </section>
+        
+            <section class="main-content">
+                <div id="grid-gallery" class="container grid-gallery">
+                    <section class="grid-wrap">
+                        <ul class="row grid">
+                            <li data-index="0">
+                                <figure>
+                                    <img src="assets/lspd.png" alt="SASP">
+                                    <div><span>LSPD</span></div>
+                                </figure>
+                            </li>
+                            <li data-index="1">
+                                <figure>
+                                    <img src="assets/ems.png" alt="SAMS">
+                                    <div><span>EMS</span></div>
+                                </figure>
+                            </li>
+                            <li data-index="2">
+                                <figure>
+                                    <img src="assets/lsc.png" alt="LSC">
+                                    <div><span>LSC</span></div>
+                                </figure>
+                            </li>
+                            <li data-index="3">
+                                <figure>
+                                    <img src="assets/ck.png" alt="FCK/CK">
+                                    <div><span>FCK/CK</span></div>
+                                </figure>
+                            </li>
+                            <li data-index="4">
+                                <figure>
+                                    <img src="assets/support.png" alt="T-SUPPORT">
+                                    <div><span>T-SUPPORT</span></div>
+                                </figure>
+                            </li>
+                        </ul>
+                    </section>
+        
+                    <section class="slideshow">
+                        <ul>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>LSPD</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc_q5u0122LqoJ7ZpCsqUNXXwg3y1kOxXMhHF2ZeiIFz9LqVA/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>EMS</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfF3KsT7YrRHw1jExAQ1kQKstxoH4JxSiEWVNTANlqBnA_dCA/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>LSC</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeZy7rsOwoyplqqZo8R2QcjncoPk6xhjuE5jzHfPSfG5uPLlA/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>FCK/CK</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScYOZLQY39zJJMn1iTJfXRrDsMB2r0Gd-r3XR8uNwEp570Nuw/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>T-SUPPORT</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScwLEl5PemPC0eAXpM3hqiQrGxsiR6jfLJHqR80Mp8LYIngnQ/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                            <li>
+                                <figure>
+                                    <figcaption>
+                                        <h3>T-SUPPORT</h3>
+                                        <div class="row open-sans-font">
+                                            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfF3KsT7YrRHw1jExAQ1kQKstxoH4JxSiEWVNTANlqBnA_dCA/viewform?usp=sharing" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Ładuję…</iframe>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </li>
+                        </ul>
+                        <nav>
+                            <span class="icon nav-prev">❮</span>
+                            <span class="icon nav-next">❯</span>
+                            <span class="nav-close">✕</span>
+                        </nav>
+                    </section>
+                </div>
+            </section>
+                <div class="footer">
+                    <img src="https://cdn.discordapp.com/attachments/1342942472661372950/1371242983373934614/cycuchy_7.png?ex=68226d0b&is=68211b8b&hm=2baa59f867b8cfca6fec3be3c38ef191df1c1b02d2ed7c280dffeef789a4fb57&" alt="logo" class="logo">
+                    <span class="copyright-text">Copyright © 2025 StormRP. All rights reserved.</span>
+                    <div class="socials">
+                        <div class="social">
+                            <a href="https://discord.gg/7dQkjmn2nW" target="_blank">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+                        </div>
+                        <div class="social">
+                            <a href="https://www.youtube.com/@stormrp" target="_blank">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                        <div class="social">
+                            <a href="https://www.tiktok.com/@stormrp" target="_blank">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script>
+            (function() {
+                function c() {
+                    var b = a.contentDocument || a.contentWindow.document;
+                    if (b) {
+                        var d = b.createElement('script');
+                        d.innerHTML = "window.__CF$cv$params={r:'8bcf885a0920c414',t:'MTcyNTMwMTQyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+                        b.getElementsByTagName('head')[0].appendChild(d)
+                    }
+                }
+                if (document.body) {
+                    var a = document.createElement('iframe');
+                    a.height = 1;
+                    a.width = 1;
+                    a.style.position = 'absolute';
+                    a.style.top = 0;
+                    a.style.left = 0;
+                    a.style.border = 'none';
+                    a.style.visibility = 'hidden';
+                    document.body.appendChild(a);
+                    if ('loading' !== document.readyState)
+                        c();
+                    else if (window.addEventListener)
+                        document.addEventListener('DOMContentLoaded', c);
+                    else {
+                        var e = document.onreadystatechange || function() {}
+                        ;
+                        document.onreadystatechange = function(b) {
+                            e(b);
+                            'loading' !== document.readyState && (document.onreadystatechange = e,
+                            c())
+                        }
+                    }
+                }
+            }
+            )();
+        </script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const galleryItems = document.querySelectorAll('.grid li');
+    const slideshow = document.querySelector('.slideshow');
+    const closeBtn = document.querySelector('.nav-close');
+
+    // Otwórz slideshow i zablokuj tło
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            slideshow.classList.add('active');
+            document.body.classList.add('slideshow-open');
+            
+            // Dodatkowe zabezpieczenie
+            document.querySelector('#root').style.pointerEvents = 'none';
+            document.querySelector('.navbar').style.pointerEvents = 'none';
+        });
+    });
+
+    // Zamknij slideshow i odblokuj tło
+    closeBtn.addEventListener('click', () => {
+        slideshow.classList.remove('active');
+        document.body.classList.remove('slideshow-open');
+        
+        // Przywróć interakcję
+        document.querySelector('#root').style.pointerEvents = 'auto';
+        document.querySelector('.navbar').style.pointerEvents = 'auto';
+    });
+});</script>
+
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Pobierz wszystkie elementy galerii i slideshow
+    const galleryItems = document.querySelectorAll('.grid li');
+    const slideshow = document.querySelector('.slideshow');
+    const slides = document.querySelectorAll('.slideshow li');
+    const prevBtn = document.querySelector('.nav-prev');
+    const nextBtn = document.querySelector('.nav-next');
+    const closeBtn = document.querySelector('.nav-close');
+    
+    let currentSlide = 0;
+
+    // Dodaj obsługę kliknięcia na elementy galerii
+    galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            currentSlide = index;
+            showSlide(currentSlide);
+            slideshow.classList.add('active');
+        });
+    });
+
+    // Dodaj obsługę przycisków nawigacji
+    prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+    });
+
+    // Dodaj obsługę przycisku zamykania
+    closeBtn.addEventListener('click', () => {
+        slideshow.classList.remove('active');
+    });
+
+    // Funkcja pokazująca konkretny slajd
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+    }
+
+    // Usunięto event listener zamykający po kliknięciu poza slideshow
+});
+        </script>
+    </body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2D9KFCJZRR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2D9KFCJZRR');
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</html>

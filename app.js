@@ -132,7 +132,7 @@ function toggleNavbar() {
 
 function getPlayers() {
   const url =
-    "https://api.codetabs.com/v1/proxy/?quest=http://83.168.68.86:30120/players.json";
+    "https://api.codetabs.com/v1/proxy/?quest=http://37.221.94.185:30120/players.json";
 
   fetch(url)
     .then((response) => {

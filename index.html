@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StormRP - Strona Główna</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html"><img src="assets/logo.png" alt="logo" class="nav-logo"></a>
+            <div class="nav-buttons" id="nav-buttons">
+                <div class="nav-button selected"><a href="index.html">STRONA GŁÓWNA</a></div>
+                <div class="nav-button"><a href="https://discord.gg/7dQkjmn2nW" target="_blank">DISCORD</a></div>
+                <div class="nav-button"><a href="https://indrop.eu/s/stormrp" target="_blank">SKLEP</a></div>
+                <div class="nav-button"><a href="podania.html">PODANIA</a></div>
+                <div class="nav-button"><a href="regulamin.html">REGULAMIN</a></div>
+            </div>
+            <i class="fa fa-bars nav-toggle" id="nav-toggle"></i>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content" data-aos="fade-up">
+                <h1>WITAJ GRACZU <span class="blue">STORMRP!</span></h1>
+                <p class="description">
+                    Wejdź do świata, który żyje własnym rytmem. Na naszym serwerze każda decyzja i każda interakcja kryją potencjał na niezapomnianą historię.
+                </p>
+                <a href="https://discord.gg/7dQkjmn2nW" target="_blank" class="button-primary">DOŁĄCZ DO NAS</a>
+            </div>
+            <img src="assets/char.png" alt="Postać z gry" class="hero-character" data-aos="fade-left" data-aos-delay="200">
+        </section>
+
+        <section class="page-container stats-section">
+            <div class="stats-grid">
+                <div class="stat-item" data-aos="fade-up">
+                    <i class="fas fa-users"></i>
+                    <div class="counter" data-target="1500">0</div>
+                    <p>Zarejestrowanych kont</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fab fa-discord"></i>
+                    <div class="counter" data-target="520">0</div>
+                    <p>Użytkowników discord</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-car"></i>
+                    <div class="counter" data-target="120">0</div>
+                    <p>Unikalnych pojazdów</p>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-server"></i>
+                    <div class="counter" data-target="128">0</div>
+                    <p>Dostępnych slotów</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="discover-section">
+            <div class="discover-item">
+                <div class="discover-image" data-aos="fade-right">
+                    <img src="assets/lsc.png" alt="Unikalne pojazdy i tuning">
+                </div>
+                <div class="discover-content" data-aos="fade-left">
+                    <h2>Unikalne <span class="highlight">Pojazdy</span></h2>
+                    <p>Odkryj szeroką gamę licencjonowanych i starannie dopracowanych pojazdów. Od sportowych demonów prędkości po klasyczne krążowniki szos – każdy znajdzie coś dla siebie. Rozbudowany system tuningu pozwoli Ci stworzyć maszynę idealnie dopasowaną do Twojego stylu.</p>
+                    <a href="https://indrop.eu/s/stormrp" target="_blank" class="button-primary">Zobacz Sklep</a>
+                </div>
+            </div>
+
+            <div class="discover-item">
+                <div class="discover-content" data-aos="fade-right">
+                    <h2>Dynamiczne <span class="highlight">Frakcje</span></h2>
+                    <p>Dołącz do szeregów Los Santos Police Department, ratuj życie jako medyk w Emergency Medical Services, lub pnij się po szczeblach kariery w przestępczym półświatku. Nasze frakcje oferują głęboką i angażującą rozgrywkę z realnym wpływem na świat serwera.</p>
+                     <a href="podania.html" class="button-primary">Sprawdź Podania</a>
+                </div>
+                <div class="discover-image" data-aos="fade-left">
+                    <img src="assets/lspd.png" alt="Dynamiczne frakcje">
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <img src="assets/logo.png" alt="logo" class="logo">
+        <span class="copyright-text">Copyright © 2025 StormRP. Wszelkie prawa zastrzeżone.</span>
+        <div class="socials">
+            <a href="https://discord.gg/7dQkjmn2nW" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://googleusercontent.com/youtube.com/0" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@stormrp" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

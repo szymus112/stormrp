@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StormRP - Podania</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a href="index.html"><img src="assets/logo.png" alt="logo" class="nav-logo"></a>
+            <div class="nav-buttons" id="nav-buttons">
+                <div class="nav-button"><a href="index.html">STRONA GŁÓWNA</a></div>
+                <div class="nav-button"><a href="https://discord.gg/7dQkjmn2nW" target="_blank">DISCORD</a></div>
+                <div class="nav-button"><a href="https://indrop.eu/s/stormrp" target="_blank">SKLEP</a></div>
+                <div class="nav-button selected"><a href="podania.html">PODANIA</a></div>
+                <div class="nav-button"><a href="regulamin.html">REGULAMIN</a></div>
+            </div>
+            <i class="fa fa-bars nav-toggle" id="nav-toggle"></i>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="section-header">
+            <h1>Złóż swoje <span>Podanie</span></h1>
+        </div>
+        <div class="grid-gallery">
+            </div>
+    </main>
+    
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Ładowanie...</h3>
+                <span class="modal-close" id="modal-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <iframe id="modal-iframe" src="" title="Formularz podania"></iframe>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <img src="assets/logo.png" alt="logo" class="logo">
+        <span class="copyright-text">Copyright © 2025 StormRP. Wszelkie prawa zastrzeżone.</span>
+        <div class="socials">
+            <a href="https://discord.gg/7dQkjmn2nW" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="https://googleusercontent.com/youtube.com/0" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@stormrp" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
